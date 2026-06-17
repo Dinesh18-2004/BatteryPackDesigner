@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Battery Pack Designer for Li-ion, LiFePO4 and AA cells">
+    <title>Battery Pack Designer </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+```
+<h1>Battery Pack Designer</h1>
+
+<div class="controls">
+
+    <div class="input-group">
+        <label>Battery Chemistry</label>
+      <select id="chemistry">
+
+    <optgroup label="18650 Li-ion Cells">
+
+        <option value="18650-2200">
+            18650 - 2200mAh
+        </option>
+
+        <option value="18650-2600">
+            18650 - 2600mAh
+        </option>
+
+        <option value="18650-3000" selected>
+            18650 - 3000mAh
+        </option>
+
+        <option value="18650-3500">
+            18650 - 3500mAh
+        </option>
+
+    </optgroup>
+
+    <optgroup label="21700 Li-ion Cells">
+
+        <option value="21700-4000">
+            21700 - 4000mAh
+        </option>
+
+        <option value="21700-5000">
+            21700 - 5000mAh
+        </option>
+
+    </optgroup>
+
+    <optgroup label="LiFePO4 Cells">
+
+        <option value="lifepo4-32700">
+            32700 LiFePO4 - 6000mAh
+        </option>
+
+        <option value="lifepo4-32700-7000">
+            32700 LiFePO4 - 7000mAh
+        </option>
+
+    </optgroup>
+
+    <optgroup label="AA Cells">
+
+        <option value="aa-alkaline">
+            AA Alkaline - 3000mAh
+        </option>
+
+        <option value="aa-nimh">
+            AA NiMH - 2500mAh
+        </option>
+
+    </optgroup>
+
+    <optgroup label="Power Bank Cells">
+
+        <option value="polymer-5000">
+            LiPo - 5000mAh
+        </option>
+
+        <option value="polymer-10000">
+            LiPo - 10000mAh
+        </option>
+
+    </optgroup>
+
+    <option value="custom">
+        Custom Cell
+    </option>
+
+</select>
+    </div>
+
+    <div class="input-group">
+        <label>Cell Voltage (V)</label>
+        <input type="number" id="cellVoltage" value="3.2" step="0.1">
+    </div>
+
+    <div class="input-group">
+        <label>Cell Capacity (Ah)</label>
+        <input type="number" id="cellCapacity" value="6">
+    </div>
+
+    <div class="input-group">
+        <label>Cell Max Current (A)</label>
+        <input type="number" id="cellCurrent" value="10">
+    </div>
+
+    <div class="slider-group">
+        <label>
+            Series Cells (S):
+            <span id="seriesValue">24</span>
+        </label>
+        <input
+            type="range"
+            id="series"
+            min="1"
+            max="33"
+            value="24">
+    </div>
+
+    <div class="slider-group">
+        <label>
+            Parallel Cells (P):
+            <span id="parallelValue">6</span>
+        </label>
+        <input
+            type="range"
+            id="parallel"
+            min="1"
+            max="20"
+            value="6">
+    </div>
+
+    <div class="input-group">
+        <label>Load Voltage (V)</label>
+        <input
+            type="number"
+            id="loadVoltage"
+            value="12">
+    </div>
+
+    <div class="input-group">
+        <label>Load Current (A)</label>
+        <input
+            type="number"
+            id="loadCurrent"
+            value="5">
+    </div>
+
+</div>
+
+<div class="results">
+
+    <div class="card">
+        <h3>Configuration</h3>
+        <p id="configuration">24S6P</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Cells</h3>
+        <p id="totalCells">144</p>
+    </div>
+
+    <div class="card">
+        <h3>Pack Voltage</h3>
+        <p id="voltage">76.8V</p>
+    </div>
+
+    <div class="card">
+        <h3>Pack Capacity</h3>
+        <p id="capacity">36Ah</p>
+    </div>
+
+    <div class="card">
+        <h3>Pack Energy</h3>
+        <p id="energy">2764.8Wh</p>
+    </div>
+
+    <div class="card">
+        <h3>Max Current</h3>
+        <p id="maxCurrent">60A</p>
+    </div>
+
+    <div class="card">
+        <h3>Load Power</h3>
+        <p id="loadPower">60W</p>
+    </div>
+
+    <div class="card">
+        <h3>Estimated Runtime</h3>
+        <p id="runtime">46.08h</p>
+    </div>
+
+    <div class="card">
+        <h3>BMS Recommendation</h3>
+        <p id="bms">24S 80A</p>
+    </div>
+
+    <div class="card">
+        <h3>Charger Voltage</h3>
+        <p id="chargerVoltage">87.6V</p>
+    </div>
+
+    <div class="card">
+        <h3>System Status</h3>
+        <p id="status">✓ Battery configuration valid</p>
+    </div>
+
+</div>
+
+<h2>Battery Layout</h2>
+
+<div id="batteryContainer">
+
+    <svg id="batteryConnections"></svg>
+
+    <div id="batteryGrid"></div>
+
+</div>
+
+<h2>Nickel Strip Layout</h2>
+
+<div id="nickelLayout"></div>
+
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
